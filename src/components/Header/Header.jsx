@@ -5,8 +5,7 @@ import { Container } from "reactstrap";
 import { NavLink, useNavigate } from "react-router-dom";
 // import { StoreContext } from "../../contexts/StoreContext";
 // import UserMenu from "../ui/UserMenu";
-// import Loader from "../ui/Icons/Loader";
-import Web3 from "web3";
+import Loader from "../ui/Icons/Loader";
 
 const NAV__LINKS = [
     {

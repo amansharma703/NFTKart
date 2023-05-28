@@ -9,7 +9,7 @@ const SellerSection = () => {
             <Container>
                 <Row>
                     <Col lg='12' className='mb-5'>
-                        <div className='seller__section-title'>
+                        <div className='seller__section-title text-gradient uppercase'>
                             <h3>Top Seller</h3>
                         </div>
                     </Col>

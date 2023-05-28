@@ -20,13 +20,13 @@ body {
 .gradient-bg-hero {
     background-color: #151c25;
     background-image: radial-gradient(at 0% 0%, hsl(302deg 25% 18%) 0, transparent 50%),
-        radial-gradient(at 50% 0%, hsl(0deg 39% 30%) 0, transparent 50%), radial-gradient(at 100% 0%, hsla(339, 49%, 30%, 1) 0, transparent 50%);
+        radial-gradient(at 50% 0%, hsl(0deg 39% 30%) 0, transparent 50%), radial-gradient(at 100% 0%, #4b50e6 0, transparent 50%);
 }
 
 .gradient-bg-artworks {
     background-color: #0f0e13;
     background-image: radial-gradient(at 50% 50%, hsl(302deg 25% 18%) 0, transparent 50%),
-        radial-gradient(at 0% 0%, hsla(253, 16%, 7%, 1) 0, transparent 50%), radial-gradient(at 50% 50%, hsla(339, 39%, 25%, 1) 0, transparent 50%);
+        radial-gradient(at 0% 0%, hsla(253, 16%, 7%, 1) 0, transparent 50%), radial-gradient(at 50% 50%, #4b50e6 0, transparent 30%);
 }
 
 .gradient-bg-footer {
@@ -39,6 +39,24 @@ body {
     background: -webkit-linear-gradient(#eee, #333);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+}
+
+.bid__btn {
+    border: none;
+    outline: none;
+    padding: 5px 22px;
+    background: transparent;
+    border: 1px solid #5142fc;
+    font-size: 0.9rem;
+    color: #fff;
+    border-radius: 50px;
+    transition: 0.3s;
+    background: #5142fc;
+}
+
+.bid__btn:hover {
+    background: #fff;
+    color: #5142fc;
 }
 
 .lds-dual-ring {

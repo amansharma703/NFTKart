@@ -33,18 +33,13 @@ const Artworks = () => {
                     ))}
                 </div>
 
-                {collection.length > 0 && nfts.length > collection.length ? (
-                    <div className='text-center my-5'>
-                        <button
-                            className='shadow-xl shadow-black text-white
-            bg-[#e32970] hover:bg-[#bd255f]
-            rounded-full cursor-pointer p-2'
-                            onClick={() => setEnd(end + count)}
-                        >
+                {collection.length > 0 && nfts.length > collection.length && (
+                    <div className='flex justify-center'>
+                        <button className='bid__btn shadow-lg shadow-black rounded-full cursor-pointer mt-4' onClick={() => setEnd(end + count)}>
                             Load More
                         </button>
                     </div>
-                ) : null}
+                )}
             </div>
         </div>
     );
@@ -67,12 +62,8 @@ const Card = ({ nft }) => {
                     <p className='text-sm font-semibold'>{nft.cost} ETH</p>
                 </div>
 
-                <button
-                    className='shadow-lg shadow-black text-white text-sm bg-[#e32970]
-            hover:bg-[#bd255f] cursor-pointer rounded-full px-1.5 py-1'
-                    onClick={setNFT}
-                >
-                    View Details
+                <button className='bid__btn d-flex align-items-center gap-1' onClick={setNFT}>
+                    <i className='ri-shopping-bag-line'></i> Place Bid
                 </button>
             </div>
         </div>

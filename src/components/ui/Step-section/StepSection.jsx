@@ -19,13 +19,13 @@ const STEP__DATA = [
 
     {
         title: "Add your NFTs",
-        desc: "By creating an account on NFTKart we can add our own NFTs in this platform ",
+        desc: "By creating an account on NFTKart, you will access to mint your own NFTs to our platform.",
         icon: "ri-image-line",
     },
 
     {
         title: "List them for sale",
-        desc: "After adding our NFTs  we can sell and buy from this NFT marketplace ",
+        desc: "After adding your NFTs, you can trade your NFTs and make money out of that in real quick",
         icon: "ri-list-check",
     },
 ];
@@ -36,7 +36,7 @@ const StepSection = () => {
             <Container>
                 <Row>
                     <Col lg='12' className='mb-4'>
-                        <h3 className='step__title'>Create and sell your NFTs</h3>
+                        <h3 className='step__title text-gradient uppercase'>Create and sell your NFTs</h3>
                     </Col>
 
                     {STEP__DATA.map((item, index) => (

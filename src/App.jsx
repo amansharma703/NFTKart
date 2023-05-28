@@ -16,6 +16,9 @@ import "./app.css";
 import Footer from "./components/Footer/Footer";
 import SellerSection from "./components/ui/Seller-section/SellerSection";
 import StepSection from "./components/ui/Step-section/StepSection";
+import Home from "./pages/Home";
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
+import Contact from "./pages/Contact";
 
 const App = () => {
     useEffect(async () => {
@@ -24,24 +27,27 @@ const App = () => {
     }, []);
 
     return (
-        <div className='min-h-screen'>
-            {/* <div className='gradient-bg-hero'> */}
+        <Router>
             <Header />
-            <HeroSection />
-            {/* <Hero /> */}
-            {/* </div> */}
-            <Artworks />
-            <SellerSection />
-            <Transactions />
-            <StepSection />
+            <div>
+                <Routes>
+                    <Route path='/' exact element={<Home />} />
+                    {/* <Route path='/market' element={<Market />} /> */}
+                    {/* <Route path='/create' element={<Create />} /> */}
+                    <Route path='/contact' element={<Contact />} />
+                    {/* <Route path='/wallet' element={<Wallet />} /> */}
+                    {/* <Route path='/market/:id' element={<NftDetails />} /> */}
+                    {/* <Route path='/profile/:userId' element={<Profile />} /> */}
+                    <Route path='*' element={<Navigate to='/' />} />
+                </Routes>
+            </div>
+            <Footer />
             <CreateNFT />
             <ShowNFT />
             <UpdateNFT />
-            <Footer />
-            {/* <Footer /> */}
             <Alert />
             <Loading />
-        </div>
+        </Router>
     );
 };
 
