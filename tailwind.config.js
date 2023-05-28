@@ -1,35 +1,113 @@
 module.exports = {
-  content: ['./src/**/*.{js,jsx,ts,tsx}'],
-  mode: 'jit',
-  darkMode: false, // or 'media' or 'class'
-  theme: {
-    fontFamily: {
-      display: ['Open Sans', 'sans-serif'],
-      body: ['Open Sans', 'sans-serif'],
-    },
-    extend: {
-      screens: {
-        mf: '990px',
-      },
-      keyframes: {
-        'slide-in': {
-          '0%': {
-            '-webkit-transform': 'translateX(120%)',
-            transform: 'translateX(120%)',
-          },
-          '100%': {
-            '-webkit-transform': 'translateX(0%)',
-            transform: 'translateX(0%)',
-          },
+    content: ["./src/**/*.{js,jsx,ts,tsx}"],
+    mode: "jit",
+    darkMode: false, // or 'media' or 'class'
+    theme: {
+        fontFamily: {
+            display: ["Open Sans", "sans-serif"],
+            body: ["Open Sans", "sans-serif"],
         },
-      },
-      animation: {
-        'slide-in': 'slide-in 0.5s ease-out',
-      },
+        extend: {
+            colors: {
+                primary: "#716DFF",
+                primaryHover: "#5B57FF",
+                secondary: "#F2F2F2",
+                secondaryHover: "#E6E6E6",
+                navyGray: "#262A37",
+                frescoWhite: "#F2F2F2",
+                darkGray: "#7A7A7A",
+                primaryGreen: "#34C759",
+                matteGray: "#474747",
+                primaryGray: "#B5B5B5",
+                lightGray: "#DBDBDB",
+                bitClout: "#343A40",
+                twitter: "#1DA1F2",
+                darkNight: "#1F2023",
+                overlay: "rgba(31, 32, 35, 0.4)",
+                componentColor: "#303234",
+                primaryYellow: "#FFCC00",
+                cvRed: "#DB0A40",
+                notifyBg: "#b5b5b5",
+                grayLighter: "#e3e3e3",
+                grayScale: {
+                    gray: "#B5B5B5",
+                },
+                bubbleBg: "#E9E9EB",
+            },
+            fontFamily: {
+                ubuntu: "'Ubuntu', sans-serif",
+                prozaLibre: "'Proza Libre', sans-serif",
+            },
+            width: {
+                "34px": "34px",
+                "22p": "22%",
+                "51px": "51px",
+                "27px": "27px",
+                "56p": "56%",
+                "260pxl": "260px",
+                "330pxl": "330px",
+                "343px": "343px",
+                "98px": "98px",
+                "428px": "428px",
+                "450px": "450px",
+                "600px": "600px",
+                "660px": "660px",
+                "458px": "458px",
+                "180px": "180px",
+                54: "13.5rem",
+                22: "5.25rem",
+                46: "11.125rem",
+                "18.75rem": "18.75rem",
+                5.5: "22px",
+                13: "52px",
+                "85p": "85%",
+                "95p": "95%",
+            },
+            height: {
+                "34px": "34px",
+                "216px": "216px",
+                "248px": "248px",
+                "616px": "616px",
+                "480px": "480px",
+                "420px": "420px",
+                "430px": "430px",
+                "650x": "650px",
+                "450x": "450px",
+                "500px": "500px",
+                "294px": "294px",
+                "27px": "27px",
+                "31px": "31px",
+                "32r": "32rem",
+                "20r": "20rem",
+                "84vh": "84vh",
+                "26x": "104px",
+                "98px": "98px",
+                "90px": "90px",
+                82: "21.4rem",
+                81: "20.4rem",
+            },
+            screens: {
+                mf: "990px",
+            },
+            keyframes: {
+                "slide-in": {
+                    "0%": {
+                        "-webkit-transform": "translateX(120%)",
+                        transform: "translateX(120%)",
+                    },
+                    "100%": {
+                        "-webkit-transform": "translateX(0%)",
+                        transform: "translateX(0%)",
+                    },
+                },
+            },
+            animation: {
+                "slide-in": "slide-in 0.5s ease-out",
+            },
+        },
     },
-  },
-  variants: {
-    extend: {},
-  },
-  plugins: [require('@tailwindcss/forms')],
-}
+    variants: {
+        extend: {},
+    },
+    plugins: [require("@tailwindcss/forms")],
+};
