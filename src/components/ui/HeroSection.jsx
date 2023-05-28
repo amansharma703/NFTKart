@@ -17,7 +17,7 @@ const HeroSection = () => {
                                 <span>sell extraordinary</span> NFTs
                             </h2>
                             <p>
-                                At MintMove, we believe that everyone should have the freedom to earn, hold, spend, share and give their money - no
+                                At NFTKart, we believe that everyone should have the freedom to earn, hold, spend, share and give their money - no
                                 matter who you are or where you come from.
                             </p>
 
@@ -25,7 +25,7 @@ const HeroSection = () => {
                                 <button className=' explore__btn d-flex align-items-center gap-2'>
                                     <i className='ri-rocket-line'></i> <Link to='/market'>Explore</Link>
                                 </button>
-                                <button className=' create__btn d-flex align-items-center gap-2'>
+                                <button className='create__btn d-flex align-items-center gap-2'>
                                     <i className='ri-ball-pen-line'></i>
                                     <Link to='/create'>Create</Link>
                                 </button>

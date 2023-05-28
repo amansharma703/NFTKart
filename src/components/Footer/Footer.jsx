@@ -76,7 +76,7 @@ const Footer = () => {
                                 NFTKart
                             </h2>
                             <p>
-                                Today, MintMove is the world’s leading blockchain ecosystem, with a product suite that includes the largest digital
+                                Today, NFTKart is the world’s leading blockchain ecosystem, with a product suite that includes the largest digital
                                 asset exchange. Our Mission is to be the infrastructure service provider in crypto.
                             </p>
                         </div>
