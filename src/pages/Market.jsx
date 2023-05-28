@@ -1,64 +1,56 @@
-import React, { useContext, useEffect, useState } from "react";
-
+import React, { useEffect, useState } from "react";
 import CommonSection from "../components/ui/Common-section/CommonSection";
-
-import NftCard from "../components/ui/Nft-card/NftCard";
-
-import { NFT__DATA } from "../assets/data/data";
-
 import { Container, Row, Col } from "reactstrap";
-
 import "../styles/market.css";
-import { StoreContext } from "../contexts/StoreContext";
-import { getAllNFT } from "../actions/nftActions";
+import { useGlobalState } from "../store";
+import { Card } from "../components/Artworks";
 import Loader from "../components/ui/Icons/Loader";
 
 const Market = () => {
-    const { state, dispatch } = useContext(StoreContext);
-    const {
-        nft: { nfts, isFetchingNFT },
-    } = state;
-    const [data, setData] = useState(nfts || NFT__DATA);
+    const [nfts] = useGlobalState("nfts");
+    const [end, setEnd] = useState(12);
+    const [count] = useState(4);
+    const [collection, setCollection] = useState([]);
 
-    const getAllNFTs = async () => {
-        await getAllNFT(dispatch);
+    const excludeID = ["213", "212", "209", "208", "205", "204", "203", "194", "196", "192", "193", "185", "183", "178", "175"];
+
+    const getCollection = () => {
+        const filterData = nfts.filter((item) => !excludeID.includes(String(item.id)));
+        return filterData.slice(0, end);
     };
+
     useEffect(() => {
-        getAllNFTs();
-    }, []);
-
-    const handleCategory = () => {};
-
-    const handleItems = () => {};
+        setCollection(getCollection());
+    }, [nfts, end]);
 
     // ====== SORTING DATA BY HIGH, MID, LOW RATE =========
     const handleSort = (e) => {
         const filterValue = e.target.value;
 
-        if (filterValue === "high") {
-            const filterData = nfts.filter((item) => item.minBid >= 6);
+        if (filterValue === "Sort By") {
+            setCollection(getCollection());
+        }
 
-            setData(filterData);
+        if (filterValue === "high") {
+            const filterData = collection.filter(({ cost }) => Number(cost) >= 0.02);
+            setCollection(filterData);
         }
 
         if (filterValue === "mid") {
-            const filterData = nfts.filter((item) => item.minBid >= 2 && item.minBid < 4.5);
-
-            setData(filterData);
+            const filterData = collection.filter(({ cost }) => Number(cost) >= 0.00015 && Number(cost) < 0.02);
+            setCollection(filterData);
         }
 
         if (filterValue === "low") {
-            const filterData = nfts.filter((item) => item.minBid >= 0 && item.minBid < 2);
-
-            setData(filterData);
+            const filterData = collection.filter(({ cost }) => Number(cost) >= 0 && Number(cost) < 0.00015);
+            console.log("filterDaat", filterData);
+            setCollection(filterData);
         }
     };
 
-    useEffect(() => {
-        if (nfts) {
-            setData(nfts);
-        }
-    }, [nfts]);
+    if (!nfts) {
+        return <Loader />;
+    }
 
     return (
         <>
@@ -67,29 +59,11 @@ const Market = () => {
             <section>
                 <Container>
                     <Row>
-                        <Col lg='12' className='mb-5'>
+                        <Col lg='12' className='mb-3'>
                             <div className='market__product__filter d-flex align-items-center justify-content-between'>
                                 <div className='filter__left d-flex align-items-center gap-5'>
-                                    {/* <div className='all__category__filter'>
-                                        <select onChange={handleCategory}>
-                                            <option>All Categories</option>
-                                            <option value='art'>Art</option>
-                                            <option value='music'>Music</option>
-                                            <option value='domain-name'>Domain Name</option>
-                                            <option value='virtual-world'>Virtual World</option>
-                                            <option value='trending-card'>Trending Cards</option>
-                                        </select>
-                                    </div> */}
-
-                                    {/* <div className='all__items__filter'>
-                                        <select onChange={handleItems}>
-                                            <option>All Items</option>
-                                            <option value='single-item'>Single Item</option>
-                                            <option value='bundle'>Bundle</option>
-                                        </select>
-                                    </div> */}
+                                    <h4 className='text-white text-3xl font-bold uppercase  mb-3'>Collections</h4>
                                 </div>
-
                                 <div className='filter__right'>
                                     <select onChange={handleSort}>
                                         <option>Sort By</option>
@@ -100,7 +74,23 @@ const Market = () => {
                                 </div>
                             </div>
                         </Col>
-                        {isFetchingNFT ? (
+                        <div className='grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6 md:gap-4 lg:gap-3 py-2.5'>
+                            {collection.map((nft, i) => (
+                                <Card key={i} nft={nft} />
+                            ))}
+                        </div>
+
+                        {collection.length > 0 && nfts.length > collection.length && (
+                            <div className='flex justify-center'>
+                                <button
+                                    className='bid__btn shadow-lg shadow-black rounded-full cursor-pointer mt-4'
+                                    onClick={() => setEnd(end + count)}
+                                >
+                                    Load More
+                                </button>
+                            </div>
+                        )}
+                        {/* {isFetchingNFT ? (
                             <div>
                                 <Loader />
                             </div>
@@ -111,7 +101,7 @@ const Market = () => {
                                     <NftCard item={item} />
                                 </Col>
                             ))
-                        )}
+                        )} */}
                     </Row>
                 </Container>
             </section>

@@ -32,20 +32,12 @@ const Artworks = () => {
                         <Card key={i} nft={nft} />
                     ))}
                 </div>
-
-                {collection.length > 0 && nfts.length > collection.length && (
-                    <div className='flex justify-center'>
-                        <button className='bid__btn shadow-lg shadow-black rounded-full cursor-pointer mt-4' onClick={() => setEnd(end + count)}>
-                            Load More
-                        </button>
-                    </div>
-                )}
             </div>
         </div>
     );
 };
 
-const Card = ({ nft }) => {
+export const Card = ({ nft }) => {
     const setNFT = () => {
         setGlobalState("nft", nft);
         setGlobalState("showModal", "scale-100");
@@ -55,7 +47,7 @@ const Card = ({ nft }) => {
         <div className='w-full shadow-xl shadow-black rounded-md overflow-hidden bg-gray-800 my-2 p-3'>
             <img src={nft.metadataURI} alt={nft.title} className='h-60 w-full object-cover shadow-lg shadow-black rounded-lg mb-3' />
             <h4 className='text-white font-semibold'>{nft.title}</h4>
-            <p className='text-gray-400 text-xs my-1'>{nft.description}</p>
+            <p className='text-gray-400 text-xs my-1 text-justify'>{nft.description}</p>
             <div className='flex justify-between items-center mt-3 text-white'>
                 <div className='flex flex-col'>
                     <small className='text-xs'>Current Price</small>
@@ -63,7 +55,7 @@ const Card = ({ nft }) => {
                 </div>
 
                 <button className='bid__btn d-flex align-items-center gap-1' onClick={setNFT}>
-                    <i className='ri-shopping-bag-line'></i> Place Bid
+                    <i className='ri-shopping-bag-line'></i> View Details
                 </button>
             </div>
         </div>

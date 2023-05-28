@@ -76,29 +76,11 @@ const ShowNFT = () => {
                     </div>
                     <div className='flex justify-between items-center space-x-2'>
                         {connectedAccount == nft?.owner ? (
-                            <button
-                                className='flex flex-row justify-center items-center
-                w-full text-[#e32970] text-md border-[#e32970]
-                py-2 px-5 rounded-full bg-transparent 
-                drop-shadow-xl border hover:bg-[#bd255f]
-                hover:bg-transparent hover:text-white
-                hover:border hover:border-[#bd255f]
-                focus:outline-none focus:ring mt-5'
-                                onClick={onChangePrice}
-                            >
+                            <button className='bid__btn shadow-lg shadow-black rounded-full cursor-pointer mt-4' onClick={onChangePrice}>
                                 Change Price
                             </button>
                         ) : (
-                            <button
-                                className='flex flex-row justify-center items-center
-                w-full text-white text-md bg-[#e32970]
-                hover:bg-[#bd255f] py-2 px-5 rounded-full
-                drop-shadow-xl border border-transparent
-                hover:bg-transparent hover:text-[#e32970]
-                hover:border hover:border-[#bd255f]
-                focus:outline-none focus:ring mt-5'
-                                onClick={handleNFTPurchase}
-                            >
+                            <button className='bid__btn shadow-lg shadow-black rounded-full cursor-pointer mt-4' onClick={handleNFTPurchase}>
                                 Purchase Now
                             </button>
                         )}
