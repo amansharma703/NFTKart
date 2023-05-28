@@ -4,8 +4,12 @@ import { Link } from "react-router-dom";
 import "./hero-section.css";
 
 import heroImg from "../../assets/images/hero.jpg";
+import { setGlobalState } from "../../store";
 
 const HeroSection = () => {
+    const onCreatedNFT = () => {
+        setGlobalState("modal", "scale-100");
+    };
     return (
         <section className='hero__section'>
             <Container>
@@ -25,9 +29,10 @@ const HeroSection = () => {
                                 <button className=' explore__btn d-flex align-items-center gap-2'>
                                     <i className='ri-rocket-line'></i> <Link to='/market'>Explore</Link>
                                 </button>
-                                <button className='create__btn d-flex align-items-center gap-2'>
+                                <button className='create__btn text-white d-flex align-items-center gap-2'>
                                     <i className='ri-ball-pen-line'></i>
-                                    <Link to='/create'>Create</Link>
+                                    <span onClick={onCreatedNFT}>Create</span>
+                                    {/* <Link to='/create'>Create</Link> */}
                                 </button>
                             </div>
                         </div>

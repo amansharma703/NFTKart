@@ -6,6 +6,9 @@ import { NavLink, useNavigate } from "react-router-dom";
 // import { StoreContext } from "../../contexts/StoreContext";
 // import UserMenu from "../ui/UserMenu";
 import Loader from "../ui/Icons/Loader";
+import { truncate, useGlobalState } from "../../store";
+import { connectWallet } from "../../Blockchain.Services";
+import UserMenu from "../ui/UserMenu";
 
 const NAV__LINKS = [
     {
@@ -29,12 +32,7 @@ const NAV__LINKS = [
 const Header = () => {
     const navigate = useNavigate();
     const headerRef = useRef(null);
-    // const { state, dispatch } = useContext(StoreContext);
-    // const {
-    //     auth: { user, isFetching },
-    // } = state;
-    // Empty web3 instance
-    // let web3 = new Web3();
+    const [connectedAccount] = useGlobalState("connectedAccount");
 
     const menuRef = useRef(null);
 
@@ -54,75 +52,6 @@ const Header = () => {
     }, []);
 
     const toggleMenu = () => menuRef.current.classList.toggle("active__menu");
-
-    // const handleMetamaskLogin = async () => {
-    //     if (window.ethereum) {
-    //         try {
-    //             const accounts = await window.ethereum.request({
-    //                 method: "eth_requestAccounts",
-    //             });
-    //             loginWithMetamask(accounts[0], "", dispatch);
-    //         } catch (err) {
-    //             console.log("metamask error: ", err);
-    //         }
-    //     } else {
-    //         alert("Etherium Not Detected");
-    //     }
-    // };
-
-    // const ethEnabled = async () => {
-    //     if (typeof window.ethereum !== "undefined") {
-    //         // Instance web3 with the provided information from the MetaMask provider information
-    //         web3 = new Web3(window.ethereum);
-    //         try {
-    //             // Request account access
-    //             await window.ethereum.enable();
-
-    //             return true;
-    //         } catch (e) {
-    //             // User denied access
-    //             return false;
-    //         }
-    //     }
-
-    //     return false;
-    // };
-
-    // const tokenAddresses = [
-    //     {
-    //         address: "0x2b591e99afe9f32eaa6214f7b7629768c40eeb39",
-    //         token: "HEX",
-    //     },
-    //     {
-    //         address: "0x3d658390460295fb963f54dc0899cfb1c30776df",
-    //         token: "COVAL",
-    //     },
-    //     {
-    //         address: "0x6b175474e89094c44da98b954eedeac495271d0f",
-    //         token: "DAI",
-    //     },
-    // ];
-
-    // const tokenABI = [
-    //     {
-    //         constant: true,
-    //         inputs: [
-    //             {
-    //                 name: "_owner",
-    //                 type: "address",
-    //             },
-    //         ],
-    //         name: "balanceOf",
-    //         outputs: [
-    //             {
-    //                 name: "balance",
-    //                 type: "uint256",
-    //             },
-    //         ],
-    //         payable: false,
-    //         type: "function",
-    //     },
-    // ];
 
     // const onClickConnect = async () => {
     //     if (await !ethEnabled()) {
@@ -161,6 +90,8 @@ const Header = () => {
     //     console.log(newAccounts);
     //     // setAccounts(newAccounts);
     // };
+
+    console.log(connectedAccount);
     return (
         <header className='header' ref={headerRef}>
             <Container>
@@ -192,19 +123,15 @@ const Header = () => {
                     </div>
 
                     <div className='nav__right d-flex align-items-center gap-5 '>
-                        {/* {user?.tokens ? (
-                            <UserMenu user={user.user} />
-                        ) : isFetching ? (
-                            <div className='mr-24'>
-                                <Loader />
-                            </div>
+                        {connectedAccount ? (
+                            <UserMenu walletAddress={connectedAccount} />
                         ) : (
                             <button className='btn d-flex gap-2 align-items-center'>
                                 <span>
                                     <i className='ri-wallet-line'></i>
                                 </span>
                                 <div
-                                    onClick={onClickConnect}
+                                    onClick={connectWallet}
                                     style={{
                                         color: "#fff",
                                     }}
@@ -212,21 +139,7 @@ const Header = () => {
                                     Connect Wallet
                                 </div>
                             </button>
-                        )} */}
-                        <button className='btn d-flex gap-2 align-items-center'>
-                            <span>
-                                <i className='ri-wallet-line'></i>
-                            </span>
-                            <div
-                                onClick={() => {}}
-                                style={{
-                                    color: "#fff",
-                                }}
-                            >
-                                Connect Wallet
-                            </div>
-                        </button>
-
+                        )}
                         <span className='mobile__menu'>
                             <i className='ri-menu-line' onClick={toggleMenu}></i>
                         </span>

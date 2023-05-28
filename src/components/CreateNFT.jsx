@@ -79,7 +79,7 @@ const CreateNFT = () => {
         justify-center bg-black bg-opacity-50 transform
         transition-transform duration-300 ${modal}`}
         >
-            <div className='bg-[#151c25] shadow-xl shadow-[#e32970] rounded-xl w-11/12 md:w-2/5 h-7/12 p-6'>
+            <div className='bg-[#151c25] shadow-xl shadow-[#e32970] rounded-xl w-11/12 md:w-2/5 h-5/6 p-6'>
                 <form className='flex flex-col'>
                     <div className='flex flex-row justify-between items-center'>
                         <p className='font-semibold text-gray-400'>Add NFT</p>
@@ -88,8 +88,8 @@ const CreateNFT = () => {
                         </button>
                     </div>
 
-                    <div className='flex flex-row justify-center items-center rounded-xl mt-5'>
-                        <div className='shrink-0 rounded-xl overflow-hidden h-20 w-20'>
+                    <div className='flex flex-row justify-center items-center rounded-xl mt-2'>
+                        <div className='shrink-0 rounded-xl overflow-hidden h-40 w-40'>
                             <img
                                 alt='NFT'
                                 className='h-full w-full object-cover cursor-pointer'
@@ -101,7 +101,7 @@ const CreateNFT = () => {
                         </div>
                     </div>
 
-                    <div className='flex flex-row justify-between items-center bg-gray-800 rounded-xl mt-5'>
+                    <div className='flex flex-row justify-between items-center bg-gray-800 rounded-xl mt-3'>
                         <label className='block'>
                             <span className='sr-only'>Choose profile photo</span>
                             <input
@@ -120,7 +120,7 @@ const CreateNFT = () => {
                         </label>
                     </div>
 
-                    <div className='flex flex-row justify-between items-center bg-gray-800 rounded-xl mt-5'>
+                    <div className='flex flex-row justify-between items-center bg-gray-800 rounded-xl mt-3'>
                         <input
                             className='block w-full text-sm
                 text-slate-500 bg-transparent border-0
@@ -134,7 +134,7 @@ const CreateNFT = () => {
                         />
                     </div>
 
-                    <div className='flex flex-row justify-between items-center bg-gray-800 rounded-xl mt-5'>
+                    <div className='flex flex-row justify-between items-center bg-gray-800 rounded-xl mt-3'>
                         <input
                             className='block w-full text-sm
                 text-slate-500 bg-transparent border-0
@@ -150,7 +150,7 @@ const CreateNFT = () => {
                         />
                     </div>
 
-                    <div className='flex flex-row justify-between items-center bg-gray-800 rounded-xl mt-5'>
+                    <div className='flex flex-row justify-between items-center bg-gray-800 rounded-xl mt-3'>
                         <textarea
                             className='block w-full text-sm resize-none
                 text-slate-500 bg-transparent border-0
@@ -173,7 +173,7 @@ const CreateNFT = () => {
               drop-shadow-xl border border-transparent
               hover:bg-transparent hover:text-[#e32970]
               hover:border hover:border-[#bd255f]
-              focus:outline-none focus:ring mt-5'
+              focus:outline-none focus:ring mt-3'
                     >
                         Mint Now
                     </button>
