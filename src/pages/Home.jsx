@@ -6,6 +6,7 @@ import SellerSection from "../components/ui/Seller-section/SellerSection";
 import StepSection from "../components/ui/Step-section/StepSection";
 import Artworks from "../components/Artworks";
 import Transactions from "../components/Transactions";
+import HotNfts from "../components/HotNfts";
 
 const Home = () => {
     return (
@@ -14,6 +15,7 @@ const Home = () => {
             <Artworks />
             <SellerSection />
             <Transactions />
+            <HotNfts />
             <StepSection />
         </>
     );
