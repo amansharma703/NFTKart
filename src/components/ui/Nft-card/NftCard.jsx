@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 import "./nft-card.css";
 
-import Modal from "../Modal/Modal";
+// import Modal from "../Modal/Modal";
 
 const NftCard = (props) => {
     const { name, _id, id, minBid, image, ownerId } = props.item;

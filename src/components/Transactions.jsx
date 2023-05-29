@@ -44,7 +44,7 @@ const Transactions = () => {
                                         <small className='flex flex-row justify-start items-center'>
                                             <span className='mr-1'>Received by</span>
                                             <span className='text-[white] mr-2'>{truncate(tx.owner, 4, 4, 11)}</span>
-                                            <a href='/'>
+                                            <a href={`/profile/${tx.owner}`}>
                                                 <MdOpenInNew />
                                             </a>
                                         </small>

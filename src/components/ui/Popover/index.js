@@ -1,16 +1,12 @@
 import React from "react";
 
-function PopOver({ text, size = 32, leftPosition = "-left-8", topPosition = "-top-11" }) {
+function PopOver({ text, size = 32, leftPosition = "-left-12", topPosition = "-top-12" }) {
     return (
         <>
             <div className={`absolute ${leftPosition} ${topPosition}  z-40`}>
                 <div className='relative'>
-                    <div
-                        className={`font-medium py-1.5 px-2 text-sm bottom-full bg-darkNight dark:bg-frescoWhite rounded-lg  text-white dark:text-darkNight w-${size} min-w-fit min-h-fit`}
-                    >
-                        <div>
-                            <p className='font-medium text-md text-center'>{text}</p>
-                        </div>
+                    <div className={`font-medium  px-2 text-sm bottom-full bg-frescoWhite rounded-lg  text-black w-${size} min-w-fit min-h-fit`}>
+                        <p className='font-medium text-md text-black text-center'>{text}</p>
                     </div>
 
                     <svg

@@ -1,5 +1,4 @@
-import React, { Fragment, useContext, useState } from "react";
-import CommonSection from "../components/ui/Common-section/CommonSection";
+import React, { Fragment, useContext, useEffect, useState } from "react";
 import Avatar from "../components/ui/Avatar";
 import { isMobile } from "../utils/utils";
 import { Menu, Transition } from "@headlessui/react";
@@ -10,28 +9,30 @@ import Copy2 from "../components/ui/Icons/Copy2";
 import ReactLinkify from "react-linkify";
 import Metamask from "../components/ui/Icons/Metamask";
 import { Col, Container, Row } from "reactstrap";
-import { NFT__DATA } from "../assets/data/data";
-import NftCard from "../components/ui/Nft-card/NftCard";
-import { StoreContext } from "../contexts/StoreContext";
+import { useParams } from "react-router-dom";
+import { Card } from "../components/Artworks";
+import { useGlobalState } from "../store";
 
-const frontEndURL = "http://localhost:3000/";
+const frontEndURL = "http://localhost:3000";
 const Profile = () => {
-    const { state, dispatch } = useContext(StoreContext);
-    const {
-        auth: {
-            user: { user },
-            isFetching,
-        },
-    } = state;
+    const [connectedAccount] = useGlobalState("connectedAccount");
+    const [nfts] = useGlobalState("nfts");
+    const { walletAddress } = useParams();
+    const [collection, setCollection] = useState([]);
 
-    console.log("user: ", user);
-    const [profile, setProfile] = useState({
-        username: "AMAN Sharma",
-        description: "I am a developer",
-        walletAddress: " ajkdsopjopasjdsajopasjdopjsaop",
-    });
+    const excludeID = ["213", "212", "209", "208", "205", "204", "203", "194", "196", "192", "193", "185", "183", "178", "175"];
+
+    const getCollection = () => {
+        return nfts.filter((item) => !excludeID.includes(String(item.id)) && item.owner === walletAddress);
+    };
+
+    console.log(connectedAccount);
     const ref = React.useRef(null);
     const [isAddressCopied, setIsAddressCopied] = useState(false);
+
+    useEffect(() => {
+        setCollection(getCollection());
+    }, [nfts]);
 
     const componentDecorator = (href, text, key) => (
         <a href={href} key={key} target='_blank' className='text-primary text-weight-bold break-words' rel='noreferrer'>
@@ -54,11 +55,7 @@ const Profile = () => {
                     <div className='relative'>
                         <img src='/bg.jpg' alt='banner' className='w-full object-cover md:h-64 h-56' loading='lazy' />
                         <div className='absolute md:-bottom-16 -bottom-12 md:left-28 transform -translate-x-1/2 md:translate-x-0 left-1/2 p-1.5 bg-white rounded-full'>
-                            <Avatar
-                                src={"https://images.deso.org/9807f86a30a973ef397e37a340b8b2750899ad92fcde20275f6a0d3b16bf8bac.webp" || user.image}
-                                username={user?.walletAddress}
-                                size={isMobile() ? "lg" : "xl"}
-                            />
+                            <Avatar username={walletAddress} size={isMobile() ? "lg" : "xl"} />
                         </div>
                     </div>
                 </div>
@@ -108,7 +105,7 @@ const Profile = () => {
                                                             <div className=' border-gray-600 cursor-pointer text-sm'>
                                                                 <CopyButton
                                                                     title='Copy Profile URL'
-                                                                    url={`${frontEndURL}/profile/${profile?._id} `}
+                                                                    url={`${frontEndURL}/profile/${walletAddress} `}
                                                                     type='button'
                                                                     text='text-base'
                                                                 />
@@ -121,47 +118,42 @@ const Profile = () => {
                                     )}
                                 </Menu>
                             </div>
-
-                            {/* {profile?._id !== undefined && user?._id === profile?._id && <EditProfile />} */}
                         </div>
                     </div>
                     <div className='md:pt-7 pt-5 font-ubuntu '>
                         <div className='flex flex-col items-start gap-2 '>
-                            {user.name && (
+                            {/* {user.name && (
                                 <p className='font-medium md:text-2xl text-xl text-frescoWhite flex gap-2 items-center'>
                                     <span>{user?.name}</span>
                                     <span>
                                         <Metamask ratio={26} />
                                     </span>
                                 </p>
-                            )}
+                            )} */}
 
                             <p className='font-medium  text-medium text-frescoWhite flex gap-2 items-center'>
                                 <span className='font-bold'>Wallet Address</span>
-                                <span>{user?.walletAddress}</span>
-                                <span className='cursor-pointer relative' onClick={() => copyMetamaskAddress(profile.walletAddress)}>
+                                <span>{walletAddress}</span>
+                                <span className='cursor-pointer relative' onClick={() => copyMetamaskAddress(walletAddress)}>
                                     {isAddressCopied ? <PopOver text={"Copied"} /> : undefined}
                                     <Copy2 />
                                 </span>
                             </p>
                         </div>
-
-                        <p className='md:w-1/2 w-full text-base font-normal text-frescoWhite leading-[18px] -tracking-[-0.25px] pt-2 md:pr-10 max-w-md'>
-                            <ReactLinkify componentDecorator={componentDecorator}>{user?.description}</ReactLinkify>
-                        </p>
                     </div>
                 </div>
             </div>
             <Row>
-                <Col lg='12' className='mb-5'>
-                    <h3 className='trending__title'>My NFTs</h3>
+                <Col lg='12' className='mb-3'>
+                    <h4 className='text-white text-3xl font-bold uppercase text-gradient'>
+                        {connectedAccount === walletAddress ? "My NFTs" : "NFTs"}
+                    </h4>
                 </Col>
-
-                {NFT__DATA.slice(0, 8).map((item, ind) => (
-                    <Col lg='3' md='4' sm='6' key={item.id * ind} className='mb-4'>
-                        <NftCard item={item} />
-                    </Col>
-                ))}
+                <div className='grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6 md:gap-4 lg:gap-3 py-3'>
+                    {collection.map((nft, i) => (
+                        <Card key={i} nft={nft} />
+                    ))}
+                </div>
             </Row>
         </Container>
     );
