@@ -64,17 +64,6 @@ function UserMenu({ walletAddress }) {
                                             </NavLink>
                                         </Menu.Item>
                                     </div>
-                                    <div className='px-1 py-1 '>
-                                        <Menu.Item>
-                                            <button
-                                                onClick={() => {}}
-                                                className={`group text-darkNight flex rounded-md items-center justify-between w-full px-2 py-2 text-sm`}
-                                            >
-                                                <span className=''>Log out</span>
-                                                <Logout />
-                                            </button>
-                                        </Menu.Item>
-                                    </div>
                                 </div>
                             </Menu.Items>
                         </Transition>

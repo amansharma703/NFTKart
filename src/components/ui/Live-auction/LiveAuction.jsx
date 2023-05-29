@@ -20,8 +20,6 @@ const LiveAuction = () => {
         );
     }
 
-    console.log(nfts);
-
     return (
         <section>
             <Container>

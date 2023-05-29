@@ -77,7 +77,6 @@ const structuredNfts = (nfts) => {
 const getAllNFTs = async () => {
     try {
         if (!ethereum) return alert("Please install Metamask");
-
         const contract = await getEtheriumContract();
         const nfts = await contract.methods.getAllNFTs().call();
         const transactions = await contract.methods.getAllTransactions().call();

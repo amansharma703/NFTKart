@@ -9,8 +9,6 @@ const HotNfts = () => {
 
     const excludeID = ["213", "212", "209", "208", "205", "204", "203", "194", "196", "192", "193", "185", "183", "178", "175"];
 
-    console.log(nfts);
-
     const getCollection = () => {
         const filterData = nfts.filter((item) => !excludeID.includes(String(item.id)) && Number(item.cost) > 0.002);
         return filterData.slice(0, end);
@@ -23,8 +21,6 @@ const HotNfts = () => {
     if (collection.length === 0) {
         return <></>;
     }
-
-    console.log(collection);
 
     return (
         <div className='bg-[#151c25] gradient-bg-artworks'>

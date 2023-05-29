@@ -18,8 +18,6 @@ const Artworks = () => {
         setCollection(getCollection());
     }, [nfts, end]);
 
-    console.log(collection);
-
     return (
         <div className='bg-[#151c25] gradient-bg-artworks'>
             <div className='w-4/5 py-10 mx-auto'>

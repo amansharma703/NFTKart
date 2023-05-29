@@ -43,7 +43,6 @@ const Market = () => {
 
         if (filterValue === "low") {
             const filterData = collection.filter(({ cost }) => Number(cost) >= 0 && Number(cost) < 0.00015);
-            console.log("filterDaat", filterData);
             setCollection(filterData);
         }
     };

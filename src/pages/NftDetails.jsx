@@ -25,8 +25,6 @@ const NftDetails = () => {
         return NFT__DATA.find((item) => item.id === id);
     }, [id]);
 
-    console.log(singleNft);
-
     useEffect(() => {
         if (singleNft) {
             setNft(singleNft);

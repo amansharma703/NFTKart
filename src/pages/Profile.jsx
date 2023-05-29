@@ -26,7 +26,6 @@ const Profile = () => {
         return nfts.filter((item) => !excludeID.includes(String(item.id)) && item.owner === walletAddress);
     };
 
-    console.log(connectedAccount);
     const ref = React.useRef(null);
     const [isAddressCopied, setIsAddressCopied] = useState(false);
 

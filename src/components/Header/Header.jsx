@@ -87,7 +87,6 @@ const Header = () => {
     //     // setAccounts(newAccounts);
     // };
 
-    console.log(connectedAccount);
     return (
         <header className='header' ref={headerRef}>
             <Container>
